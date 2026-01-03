@@ -1,0 +1,200 @@
+/* src/Homecoming.css */
+
+/* --- Typography & Variables --- */
+:root {
+    --font-title: 'Cinzel Decorative', cursive;
+    --font-script: 'Great Vibes', cursive;
+    --font-body: 'Montserrat', sans-serif;
+    
+    /* Theme Colors */
+    --color-main-text: #ffffff;
+    --color-circle-bg: #8B0000;  /* Dark Red */
+    --color-circle-text: #ffffff;
+}
+
+/* 1. FIX: Set background black to hide any white lines at bottom */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #000000; 
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* --- Main Container --- */
+.invite-container {
+    /* 1. FIX: Use 'dvh' to fit mobile screens perfectly */
+    min-height: 100dvh; 
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                url('./assets/images/bg-layered.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    color: var(--color-main-text);
+    /* Remove padding here, we handle it in content-layer */
+    padding-bottom: 0; 
+}
+
+/* --- Content Layer (Text) --- */
+.content-layer {
+    position: relative;
+    z-index: 2;
+    padding-top: 2rem;
+    /* 2. FIX: Massive bottom padding so text doesn't go behind the couple */
+    padding-bottom: 40vh; 
+}
+
+/* --- Header Details --- */
+.header-detail h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--color-main-text);
+}
+.header-detail p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+/* --- Main Title Section --- */
+.date-title {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+}
+
+.main-title {
+    font-family: var(--font-title);
+    /* 3. FIX: Smaller fonts for mobile using clamp */
+    /* clamp(Minimum, Preferred, Maximum) */
+    font-size: clamp(2.5rem, 10vw, 7rem);
+    font-weight: 700;
+    line-height: 0.9;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: -0.5rem; 
+}
+
+.script-subtitle {
+    font-family: var(--font-script);
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: var(--color-main-text);
+    position: relative;
+    z-index: 3;
+}
+
+/* --- Central Names Badge --- */
+.names-badge-container {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.names-badge {
+    /* 3. FIX: Slightly smaller circle on default */
+    width: 180px;
+    height: 180px;
+    background-color: var(--color-circle-bg); 
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-circle-text);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    border: 2px solid white;
+}
+
+.names-badge h2 {
+    font-family: var(--font-script);
+    font-size: 2.2rem;
+    line-height: 1;
+    margin: 0;
+}
+.names-badge span {
+    font-family: var(--font-title);
+    font-size: 1rem;
+}
+
+/* --- Schedule Details --- */
+.schedule-box h5 {
+    font-family: var(--font-title);
+    color: var(--color-main-text);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.schedule-box p {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* --- Foreground Image --- */
+.foreground-image-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* 2. FIX: Limit height so it doesn't take over the whole screen */
+    height: 35vh; 
+    z-index: 3;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none; /* Allows scrolling if user touches image area */
+}
+
+.foreground-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Optional fade effect */
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+
+/* --- Mobile Specific Adjustments --- */
+@media (max-width: 768px) {
+    .invite-container {
+         background-attachment: scroll; /* Fixes jarring scroll on iPhone */
+         background-position: center center;
+    }
+
+    /* 3. FIX: Force smaller font sizes on mobile specifically */
+    .main-title {
+        font-size: 2.8rem; 
+    }
+    .script-subtitle {
+        font-size: 2rem;
+    }
+    
+    .names-badge {
+        width: 150px;
+        height: 150px;
+        margin: 1rem auto;
+    }
+    .names-badge h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Ensure schedule text is readable */
+    .schedule-box {
+        margin-bottom: 1.5rem;
+        padding: 0 10px;
+    }
+
+    /* 2. FIX: Adjust overlap area for mobile */
+    .content-layer {
+        padding-bottom: 40vh; /* Keeps text above the image */
+    }
+    .foreground-image-container {
+        height: 35vh; /* Image takes bottom 35% of screen */
+    }
+}
