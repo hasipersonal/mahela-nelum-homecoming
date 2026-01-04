@@ -15,7 +15,7 @@ const HomecomingInvite = () => {
         {/* Top Section: Time and Location Header */}
         <Row className="pt-4 align-items-start header-detail">
           <Col xs={6} className="text-start">
-            <h4>06:30 PM</h4>
+            <h4>10:00 AM</h4>
             <p><i className="bi bi-geo-alt text-danger me-1"></i>Our Home</p>
           </Col>
           <Col xs={6} className="text-end">
@@ -40,15 +40,15 @@ const HomecomingInvite = () => {
 
         <Row className="justify-content-center mt-5 text-shadow-sm gap-3">
             <Col md={5} lg={4} className="schedule-box px-4">
-                <h5>06:30 PM | Welcome</h5>
+                <h5>10:00 AM | Welcome</h5>
                 <p>
-                Join us for welcome drinks and appetizers in the main foyer as we kick off the evening's celebration.
+                Join us for welcome drinks and appetizers in the main foyer as we kick off the morning's celebration.
                 </p>
             </Col>
             <Col md={5} lg={4} className="schedule-box px-4">
-                <h5>08:00 PM | Dinner</h5>
+                <h5>1:00 PM | Lunch</h5>
                 <p>
-                    A celebratory dinner buffet will be served in the banquet hall, followed by music and dancing.
+                    A celebratory lunch buffet will be served in the banquet hall, followed by music and dancing.
                 </p>
             </Col>
         </Row>
